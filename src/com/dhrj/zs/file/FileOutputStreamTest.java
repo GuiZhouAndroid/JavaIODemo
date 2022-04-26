@@ -21,7 +21,6 @@ public class FileOutputStreamTest {
             //开始写出
             //fileOutputStream.write(new byte[]{'a','b','c','d','e'});//byte数组全部写出到文件
             //fileOutputStream.write(new byte[]{'a', 'b', 'c', 'd', 'e'}, 0, 2);//byte数组部分写出到文件
-
             //写入中文---> getBytes()
             byte[] bytes = "我是中国人".getBytes();
             fileOutputStream.write(bytes);
