@@ -13,7 +13,7 @@ import java.io.IOException;
  * @author ZSAndroid
  * @create 2022-04-26-16:50
  */
-public class FileCopyTest {
+public class FileStreamCopyTest {
     public static void main(String[] args) {
         FileInputStream fis = null;
         FileOutputStream fos = null;
@@ -23,7 +23,7 @@ public class FileCopyTest {
             //粘贴目标(写出内存数据 到 硬盘文件)
             fos = new FileOutputStream("src/com/dhrj/zs/MyJavaFileOutputStream", true);
             //同时进行读写业务
-            byte[] bytes = new byte[1024 * 1024];//1K * 1000 = 1000k 近似1mb
+            byte[] bytes = new byte[1024 * 1024];//1024B * 1024B = 1048576B = 1024KB =  1mb
             int readByteNum;
             while ((readByteNum = fis.read(bytes)) != -1) {
                 fos.write(bytes, 0, readByteNum);
