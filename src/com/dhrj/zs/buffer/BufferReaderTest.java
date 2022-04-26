@@ -4,7 +4,7 @@ import java.io.*;
 
 /**
  * created by on 2022/4/26
- * 描述：缓存字符输入流 + InputStreamReader转换流(字节流 转换为 字符流)
+ * 描述：缓冲区字符输入流 + InputStreamReader转换流(字节流 转换为 字符流)
  *
  * @author ZSAndroid
  * @create 2022-04-26-18:37
