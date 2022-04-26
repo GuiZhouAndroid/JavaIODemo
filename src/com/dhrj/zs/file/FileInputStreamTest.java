@@ -6,7 +6,7 @@ import java.io.IOException;
 
 /**
  * created by on 2022/4/26
- * 描述：文件字节流输入流
+ * 描述：文件字节流输入流，负责读：硬盘--->内存
  *
  * @author ZSAndroid
  * @create 2022-04-26-15:09
@@ -57,16 +57,12 @@ public class FileInputStreamTest {
             fileInputStream = new FileInputStream("file");//工程目录为默认为IDEA的当前路径
             //fileInputStream.skip(x)//跳过几个字节不读。
             int readByteNum;
-            StringBuffer stringBuffer = new StringBuffer();
             //fileInputStream.read(new byte[4]))读取返回的int是字节的总数量，不是字节数据本身
             byte[] bytes = new byte[100];
             while ((readByteNum = fileInputStream.read(bytes)) != -1) {
                 //按照4个字节大小遍历n次，遍历一次byte数组转换一次String字符串
                 System.out.println("遍历中===" + new String(bytes, 0, readByteNum));
-                //拼接遍历转换后的String字符串
-                stringBuffer.append(new String(bytes, 0, readByteNum));
             }
-            System.out.println("遍历结束后拼接" + stringBuffer);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
