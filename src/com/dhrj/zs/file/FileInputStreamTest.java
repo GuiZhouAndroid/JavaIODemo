@@ -25,7 +25,7 @@ public class FileInputStreamTest {
     public static void fileInputStreamOneRead() {
         FileInputStream fileInputStream = null;
         try {
-            fileInputStream = new FileInputStream("C:\\Users\\ZSAndroid\\Desktop\\Demo\\JavaIODemo\\file");
+            fileInputStream = new FileInputStream("file");
             //fileInputStream.skip(x)//跳过几个字节不读。
             int readResult;
             //fileInputStream.read()读取返回的int是字节数据本身
@@ -58,10 +58,11 @@ public class FileInputStreamTest {
             //fileInputStream.skip(x)//跳过几个字节不读。
             int readByteNum;
             //fileInputStream.read(new byte[4]))读取返回的int是字节的总数量，不是字节数据本身
-            byte[] bytes = new byte[100];
+            byte[] bytes = new byte[100];//指定每次读取 100 字节
+            //read()：读取"file.txt"到缓冲区，再将总字节数写入字节bytes数组中，若已到达文件结尾没有更多数据，则为-1
             while ((readByteNum = fileInputStream.read(bytes)) != -1) {
-                //按照4个字节大小遍历n次，遍历一次byte数组转换一次String字符串
-                System.out.println("遍历中===" + new String(bytes, 0, readByteNum));
+                //按照100个字节大小遍历n次，遍历一次byte数组转换一次String字符串
+                System.out.println(new String(bytes, 0, readByteNum));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -85,11 +86,12 @@ public class FileInputStreamTest {
         FileInputStream fileInputStream = null;
         try {
             fileInputStream = new FileInputStream("file");//工程目录为默认为IDEA的当前路径
-            //fileInputStream.skip(x)//跳过几个字节不读。
+            //available()：返回可从此输入流读取的剩余字节数的字节值
             byte[] bytes = new byte[fileInputStream.available()];
+            //一次性读取文件全部字节容量的数据
             fileInputStream.read(bytes);
             //遍历字节的总数量的byte数组并转换String字符串
-            System.out.println("遍历结束===" + new String(bytes));
+            System.out.println(new String(bytes));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
